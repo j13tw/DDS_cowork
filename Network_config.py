@@ -3,10 +3,11 @@ import serial
 from serial import SerialException
 import datetime, time
 
-Class Reboot_system()
+Class Reboot_system():
     def __init__(self):
        self.command = "sudo init 6"
-    def reboot(self)
+    
+    def reboot(self):
        os.system(self.command)
  
 class Watchdog_config():
