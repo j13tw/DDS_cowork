@@ -1,0 +1,38 @@
+import os, sys
+
+class Net_config():
+    def __init__(self):
+        self.f = open('/etc/network/interfaces', 'r')
+        print(self.f.read())
+        self.f.close()
+    def eth0_dhcp(self):
+        self.f = open('/etc/network/interfaces', 'w+')
+        self.f.write('# /etc/network//etc/network/interfacess\n')
+        self.f.write('sourse-directory /etc/network//etc/network/interfaces.d\n')
+        self.f.write('auto lo eth0\n')
+        self.f.write('iface lo inet loopback\n')
+        self.f.close()
+        os.system('sudo ifdown eth0')
+        os.system('sudo ifup etho')
+        self.f = open('/etc/network/interfaces', 'r')
+        print(self.f.read())
+        self.f.close()
+    def eth0_static(self, ip, netmask, gateway):
+        self.f = open('/etc/network/interfaces', 'w+')
+        self.f.write('auto lo eth0\n')
+        self.f.write('iface lo inet static\n')
+        self.f.write('address ')
+        self.f.write('ip')
+        self.f.write('\n')
+        self.f.write('netmask ')
+        self.f.write(netmask)
+        self.f.write('\n')
+        self.f.write('gateway ')
+        self.f.write(gatemask)
+        self.f.write('\n')
+        self.f.close()
+        os.system('sudo ifdown eth0')
+        os.system('sudo ifup etho')
+        self.f = open('/etc/network/interfaces', 'r')
+        print(self.f.read())
+        self.f.close()
