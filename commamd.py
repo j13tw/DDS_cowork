@@ -36,3 +36,6 @@ NTP.ntp_set('TIME.google.com')
 # date / time control for user By hands
 TC.date_set('2018', '07', '31') 
 TC.time_set('20', '10', '30')
+
+# get on path " .ini " file list
+FS.ini_list() 
