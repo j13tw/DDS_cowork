@@ -65,9 +65,9 @@ class Net_config():
 
     def eth1_dhcp(self):
         os.system("sudo sed -i '12c iface eth1 inet dhcp' /etc/network/interfaces")
+        os.system("sudo sed -i '13c \\ ' /etc/network/interfaces")
         os.system("sudo sed -i '14c \\ ' /etc/network/interfaces")
         os.system("sudo sed -i '15c \\ ' /etc/network/interfaces")
-        os.system("sudo sed -i '16c \\ ' /etc/network/interfaces")
         os.system('lsusb | grep "Realtek" | cut -c16,17,18 >/tmp/usb.txt')
         self.usb_id = open('/tmp/usb.txt')
         self.usb_reset = 'sudo python /etc/network/Restusb.py -d ' + self.usb_id.read()
