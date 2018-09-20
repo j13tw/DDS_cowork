@@ -3,11 +3,11 @@ import serial
 from serial import SerialException
 import datetime, time
 
-
 class Gps_time():
     def __init__(self):
         self.set_date = ""
         self.set_time = ""
+
     def get_time(self):
         try:
             self.gps = serial.Serial('/tty/USB0', 4800, timeout=1)

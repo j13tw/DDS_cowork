@@ -8,6 +8,7 @@ NC = Network_config.Net_config()
 NTP = Network_config.Ntp_config()
 TC = Network_config.Time_config()
 FS = Network_config.File_search()
+GPS = Network_config.Gps_time()
 
 # inner Ethernet card
 NC.eth0_dhcp()
@@ -37,5 +38,12 @@ NTP.ntp_set('TIME.google.com')
 TC.date_set('2018', '07', '31') 
 TC.time_set('20', '10', '30')
 
-# get on path " .ini " file list
+# get on path ".ini" file list
 FS.ini_list() 
+-> ["ABC.ini", "BCD.ini", "CDE.ini"]
+
+# use gps to fix your device date & time
+GPS.get_time()
+-> ERROR is GPS-Sensor not found
+-> OK is set System time OK 
+
