@@ -78,7 +78,7 @@ class Gps_time():
 
     def get_time(self):
         try:
-            self.gps = serial.Serial('/tty/USB0', 4800, timeout=1)
+            self.gps = serial.Serial('dev//ttyUSB0', 4800, timeout=1)
         except:
             return "ERROR"    
         while(1):
