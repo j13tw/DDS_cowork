@@ -11,10 +11,21 @@ class Reboot_system():
 
 class Watchdog_config():
     def __init__(self):
-        self.cpu_short_load = "24"
-        self.cpu_middle_load = "20"
-        self.cpu_long_load = "18"
-        self.cpu_temperature = "40"
+        self.cpu_short_load = "0"
+        self.cpu_middle_load = "0"
+        self.cpu_long_load = "0"
+        self.cpu_temperature = "0"
+        f = open("/etc/modules", "r")
+        for x in range(1,9):
+            tmp = f.readline().split("\n\r")[0].split("\n")[0]
+            if (tmp == "bcm2835_wdt") break
+            if (x == 8):
+                os.system("sudo cp /library/modules /etc/modules")
+                os.system("sudo modprobe bcm2835_wdt")
+                os.system("sudo apt-get install watchdog >/dev/null 2>&1")
+	        os.system("sudo cp /library/watchdog.conf /etc/watchdog.conf")
+	        os.system("sudo service watchdog start")
+	        os.system("sudo update-rc.d watchdog defaults")
 
     def watchdog_status(self):
         file = open('/etc/watchdog.conf', 'r') 
