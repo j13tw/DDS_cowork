@@ -312,7 +312,7 @@ class Net_config():
         eth1 = str(result.communicate()[0]).split("\\n")[0].split("b'    ")[1]
         eth1_ip = eth1.split(" ")[1].split('/')[0]
         eth1_netmask = int(eth1.split(" ")[1].split('/')[1])
-        eth1_gw = str(eth0.split(" ")[3])
+        eth1_gw = str(eth1.split(" ")[3])
 
         if(eth1_netmask <= 8):
             eth1_nm_end = ".0.0.0"
