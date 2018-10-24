@@ -378,7 +378,7 @@ class Net_config():
         os.system("sudo sed -i '5c \\ ' /etc/network/interfaces")
         os.system("sudo sed -i '6c \\ ' /etc/network/interfaces")
         os.system('sudo ifdown eth0')
-        os.system('sudo ifup eth0')
+        os.system('sudo ifup --ignore-errors eth0')
         os.system('sudo cp /etc/network/interfaces ./library/interfaces.bak')
 
     def eth1_dhcp(self):
@@ -403,7 +403,7 @@ class Net_config():
         command = "sudo sed -i '6c gateway " + gateway + "' /etc/network/interfaces"
         os.system(command)
         os.system('sudo ifdown eth0')
-        os.system('sudo ifup eth0')
+        os.system('sudo ifup --ignore-errors eth0')
         os.system('sudo cp /etc/network/interfaces /etc/network/interfaces.bak')
 
     def eth1_static(self, ip, netmask, gateway):
@@ -428,7 +428,7 @@ class Net_config():
         os.system(command)
         os.system("sudo sed -i '8c \\ ' /etc/network/interfaces")
         os.system('sudo ifdown eth0')
-        os.system('sudo ifup eth0')
+        os.system('sudo ifup --ignore-errors eth0')
         os.system('sudo cp /etc/network/interfaces /etc/network/interfaces.bak')
 
     def eth1_dns(self, dns):
@@ -447,7 +447,7 @@ class Net_config():
         command = "sudo sed -i '8c dns-nameserver " + sub_dns + "' /etc/network/interfaces"
         os.system(command)
         os.system('sudo ifdown eth0')
-        os.system('sudo ifup eth0')
+        os.system('sudo ifup --ignore-errors eth0')
         os.system('sudo cp /etc/network/interfaces /etc/network/interfaces.bak')
     
     def eth1_dual_dns(self, dns, sub_dns):
@@ -465,7 +465,7 @@ class Net_config():
         os.system(command)
         os.system("sudo sed -i '8c \\ ' /etc/network/interfaces")
         os.system('sudo ifdown eth0')
-        os.system('sudo ifup eth0')
+        os.system('sudo ifup --ignore-errors eth0')
         os.system('sudo cp /etc/network/interfaces /etc/network/interfaces.bak')
     
     def eth1_auto_dns(self):
