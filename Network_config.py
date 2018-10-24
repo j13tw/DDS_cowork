@@ -304,11 +304,11 @@ class Net_config():
                 value = value / 2
             eth0_nm = eth0_nm_head + str(int(count))
 
-        #print(eth0)
+#        print(eth0)
         print("eth0")
-        print(eth0_ip)
-        print(eth0_nm)
-        print(eth0_gw)
+        print("eth0_ip :", eth0_ip)
+        print("eth0_nm :", eth0_nm)
+        print("eth0_gw :", eth0_gw)
         return eth0_ip, eth0_nm, eth0_gw
     
     def eth1_status(self):
@@ -365,11 +365,11 @@ class Net_config():
                 value = value / 2
             eth1_nm = eth1_nm_head + str(int(count))
 
-        #print(eth1)
+#        print(eth1)
         print("eth1")
-        print(eth1_ip)
-        print(eth1_nm)
-        print(eth1_gw)
+        print("eth1_ip :", eth1_ip)
+        print("eth1_nm :", eth1_nm)
+        print("eth1_gw :", eth1_gw)
         return eth1_ip, eth1_nm, eth1_gw
 
     def eth0_dhcp(self):
