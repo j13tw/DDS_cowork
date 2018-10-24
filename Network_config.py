@@ -258,7 +258,7 @@ class Net_config():
         command = 'ip r show dev eth0 | grep default'
         result = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         try:
-            eth0_gw = str(result.communicate()[0])split(" ")[2]
+            eth0_gw = str(result.communicate()[0]).split(" ")[2]
         except:
             eth0_gw = ""
 
@@ -320,7 +320,7 @@ class Net_config():
         command = 'ip r show dev eth1 | grep default'
         result = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         try:
-            eth1_gw = str(result.communicate()[0])split(" ")[2]
+            eth1_gw = str(result.communicate()[0]).split(" ")[2]
         except:
             eth1_gw = ""
 
