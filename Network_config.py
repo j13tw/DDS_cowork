@@ -250,7 +250,7 @@ class Net_config():
             os.system('sudo cp ./library/Restusb.py /etc/network/Restusb.py')
 
     def eth0_status(self):
-        command = 'ip address show dev eth0 | grep "eth0" | awk "END {print}""
+        command = 'ip address show dev eth0 | grep "eth0" | awk "END {print}"'
         result = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         eth0 = str(result.communicate()[0]).split("\\n")[0].split("b'    ")[1]
         eth0_ip = str(eth0.split(" ")[1].split('/')[0])
