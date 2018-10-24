@@ -255,7 +255,12 @@ class Net_config():
         eth0 = str(result.communicate()[0]).split("\\n")[0].split("b'    ")[1]
         eth0_ip = str(eth0.split(" ")[1].split('/')[0])
         eth0_netmask = int(eth0.split(" ")[1].split('/')[1])
-        eth0_gw = str(eth0.split(" ")[3])
+        command = 'ip r show dev eth0 | grep default'
+        result = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+        try:
+            eth0_gw = str(result.communicate()[0])split(" ")[2]
+        except:
+            eth0_gw = ""
 
         if(eth0_netmask <= 8):
             eth0_nm_end = ".0.0.0"
@@ -312,7 +317,12 @@ class Net_config():
         eth1 = str(result.communicate()[0]).split("\\n")[0].split("b'    ")[1]
         eth1_ip = eth1.split(" ")[1].split('/')[0]
         eth1_netmask = int(eth1.split(" ")[1].split('/')[1])
-        eth1_gw = str(eth1.split(" ")[3])
+        command = 'ip r show dev eth1 | grep default'
+        result = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+        try:
+            eth1_gw = str(result.communicate()[0])split(" ")[2]
+        except:
+            eth1_gw = ""
 
         if(eth1_netmask <= 8):
             eth1_nm_end = ".0.0.0"
