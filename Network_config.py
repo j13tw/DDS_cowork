@@ -312,7 +312,7 @@ class Net_config():
         return eth0_ip, eth0_nm, eth0_gw
     
     def eth1_status(self):
-        command = 'ip address show dev eth0 | grep "eth1" | awk "END {print}"'
+        command = 'ip address show dev eth1 | grep "eth1" | awk "END {print}"'
         result = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         eth1 = str(result.communicate()[0]).split("\\n")[0].split("b'    ")[1]
         eth1_ip = eth1.split(" ")[1].split('/')[0]
