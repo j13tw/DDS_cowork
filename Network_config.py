@@ -250,7 +250,7 @@ class Net_config():
             os.system('sudo cp ./library/Restusb.py /etc/network/Restusb.py')
 
     def eth0_status(self):
-        command = 'ip add show dev eth0 | grep "inet" | head -1'
+        command = 'ip address show dev eth0 | grep "eth0" | awk "END {print}""
         result = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         eth0 = str(result.communicate()[0]).split("\\n")[0].split("b'    ")[1]
         eth0_ip = str(eth0.split(" ")[1].split('/')[0])
@@ -312,7 +312,7 @@ class Net_config():
         return eth0_ip, eth0_nm, eth0_gw
     
     def eth1_status(self):
-        command = 'ip add show dev eth1 | grep "inet" | head -1'
+        command = 'ip address show dev eth0 | grep "eth0" | awk "END {print}"'
         result = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         eth1 = str(result.communicate()[0]).split("\\n")[0].split("b'    ")[1]
         eth1_ip = eth1.split(" ")[1].split('/')[0]
