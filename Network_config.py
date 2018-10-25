@@ -259,7 +259,7 @@ class Net_config():
             eth0_netmask = int(eth0.split(" ")[1].split('/')[1])
         except:
             error_code = 1
-            eth0_ip = ""
+            eth0_ip = "disconnect"
             eth0_netmask = 0
 
         if(eth0_netmask <= 8 and error_code == 0):
@@ -304,14 +304,14 @@ class Net_config():
                 value = value / 2
             eth0_nm = eth0_nm_head + str(int(count))
         else:
-            eth0_nm = ""
+            eth0_nm = "disconnect"
 
         command = 'ip r show dev eth0 | grep default'
         result = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         try:
             eth0_gw = str(result.communicate()[0]).split(" ")[2]
         except:
-            eth0_gw = ""
+            eth0_gw = "not use"
 
 #        print(eth0)
         print("eth0")
@@ -330,7 +330,7 @@ class Net_config():
             eth1_netmask = int(eth1.split(" ")[1].split('/')[1])
         except:
             error_code = 1
-            eth1_ip = ""
+            eth1_ip = "disconnect"
             eth1_netmask = 0
 
         if(eth1_netmask <= 8 and error_code == 0):
@@ -374,14 +374,14 @@ class Net_config():
                 value = value / 2
             eth1_nm = eth1_nm_head + str(int(count))
         else:
-            eth1_nm = ""
+            eth1_nm = "disconnect"
 
         command = 'ip r show dev eth1 | grep default'
         result = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         try:
             eth1_gw = str(result.communicate()[0]).split(" ")[2]
         except:
-            eth1_gw = ""
+            eth1_gw = "not use"
 
 #        print(eth1)
         print("eth1")
