@@ -252,15 +252,13 @@ class Net_config():
     def eth0_status(self):
         command = 'ip address show dev eth0 | grep "eth0" | awk "END {print}"'
         result = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-        eth0 = str(result.communicate()[0]).split("\\n")[0].split("b'    ")[1]
-        eth0_ip = str(eth0.split(" ")[1].split('/')[0])
-        eth0_netmask = int(eth0.split(" ")[1].split('/')[1])
-        command = 'ip r show dev eth0 | grep default'
-        result = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         try:
-            eth0_gw = str(result.communicate()[0]).split(" ")[2]
+            eth0 = str(result.communicate()[0]).split("\\n")[0].split("b'    ")[1]
+            eth0_ip = str(eth0.split(" ")[1].split('/')[0])
+            eth0_netmask = int(eth0.split(" ")[1].split('/')[1])
         except:
-            eth0_gw = ""
+            eth0_ip = ""
+            eth0_netmask = ""
 
         if(eth0_netmask <= 8):
             eth0_nm_end = ".0.0.0"
@@ -303,6 +301,15 @@ class Net_config():
                 count = count + value
                 value = value / 2
             eth0_nm = eth0_nm_head + str(int(count))
+        else:
+            eth0_nm = ""
+
+        command = 'ip r show dev eth0 | grep default'
+        result = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+        try:
+            eth0_gw = str(result.communicate()[0]).split(" ")[2]
+        except:
+            eth0_gw = ""
 
 #        print(eth0)
         print("eth0")
@@ -314,15 +321,13 @@ class Net_config():
     def eth1_status(self):
         command = 'ip address show dev eth1 | grep "eth1" | awk "END {print}"'
         result = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-        eth1 = str(result.communicate()[0]).split("\\n")[0].split("b'    ")[1]
-        eth1_ip = eth1.split(" ")[1].split('/')[0]
-        eth1_netmask = int(eth1.split(" ")[1].split('/')[1])
-        command = 'ip r show dev eth1 | grep default'
-        result = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         try:
-            eth1_gw = str(result.communicate()[0]).split(" ")[2]
+            eth1 = str(result.communicate()[0]).split("\\n")[0].split("b'    ")[1]
+            eth1_ip = eth1.split(" ")[1].split('/')[0]
+            eth1_netmask = int(eth1.split(" ")[1].split('/')[1])
         except:
-            eth1_gw = ""
+            eth1_ip = ""
+            eth1_netmask = ""
 
         if(eth1_netmask <= 8):
             eth1_nm_end = ".0.0.0"
@@ -364,6 +369,15 @@ class Net_config():
                 count = count + value
                 value = value / 2
             eth1_nm = eth1_nm_head + str(int(count))
+        else:
+            eth1_nm = ""
+
+        command = 'ip r show dev eth1 | grep default'
+        result = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+        try:
+            eth1_gw = str(result.communicate()[0]).split(" ")[2]
+        except:
+            eth1_gw = ""
 
 #        print(eth1)
         print("eth1")
