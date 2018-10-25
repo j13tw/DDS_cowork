@@ -262,7 +262,7 @@ class Net_config():
             eth0_ip = ""
             eth0_netmask = 0
 
-        if(eth0_netmask <= 8 and error_code = 0):
+        if(eth0_netmask <= 8 and error_code == 0):
             eth0_nm_end = ".0.0.0"
             value = 128
             count = 0
@@ -271,7 +271,7 @@ class Net_config():
                 value = value / 2
             eth0_nm = str(int(count)) + eth0_nm_end
             
-        elif(eth0_netmask <= 16 and eth0_netmask > 8 and error_code = 0):
+        elif(eth0_netmask <= 16 and eth0_netmask > 8 and error_code == 0):
             eth0_netmask = eth0_netmask - 8
             eth0_nm_head = "255."
             eth0_nm_end = ".0.0"
@@ -282,7 +282,7 @@ class Net_config():
                 value = value / 2
             eth0_nm = eth0_nm_head + str(int(count)) + eth0_nm_end
 
-        elif(eth0_netmask <= 24 and eth0_netmask > 16 and error_code = 0):
+        elif(eth0_netmask <= 24 and eth0_netmask > 16 and error_code == 0):
             eth0_netmask = eth0_netmask - 16
             eth0_nm_head = "255.255."
             eth0_nm_end = ".0"
@@ -293,7 +293,7 @@ class Net_config():
                 value = value / 2
             eth0_nm = eth0_nm_head + str(int(count)) + eth0_nm_end
 
-        elif(eth0_netmask <= 32 and eth0_netmask > 24 and error_code = 0):
+        elif(eth0_netmask <= 32 and eth0_netmask > 24 and error_code == 0):
             eth0_netmask = eth0_netmask - 24
             eth0_nm_head = "255.255.255."
             eth0_netmask = eth0_netmask
@@ -333,7 +333,7 @@ class Net_config():
             eth1_ip = ""
             eth1_netmask = 0
 
-        if(eth1_netmask <= 8 and error_code = 0):
+        if(eth1_netmask <= 8 and error_code == 0):
             eth1_nm_end = ".0.0.0"
             value = 128
             count = 0
@@ -342,7 +342,7 @@ class Net_config():
                 value = value / 2
             eth1_nm = str(int(count)) + eth1_nm_end
             
-        elif(eth1_netmask <= 16 and eth1_netmask > 8 and error_code = 0):
+        elif(eth1_netmask <= 16 and eth1_netmask > 8 and error_code == 0):
             eth1_netmask = eth1_netmask - 8
             eth1_nm_head = "255."
             eth1_nm_end = ".0.0"
@@ -353,7 +353,7 @@ class Net_config():
                 value = value / 2
             eth1_nm = eth1_nm_head + str(int(count)) + eth1_nm_end
 
-        elif(eth1_netmask <= 24 and eth1_netmask > 16 and error_code = 0):
+        elif(eth1_netmask <= 24 and eth1_netmask > 16 and error_code == 0):
             eth1_netmask = eth1_netmask - 16
             eth1_nm_head = "255.255."
             eth1_nm_end = ".0"
@@ -364,7 +364,7 @@ class Net_config():
                 value = value / 2
             eth1_nm = eth1_nm_head + str(int(count)) + eth1_nm_end
 
-        elif(eth1_netmask <= 32 and eth1_netmask > 24 and error_code = 0):
+        elif(eth1_netmask <= 32 and eth1_netmask > 24 and error_code == 0):
             eth1_netmask = eth1_netmask - 24
             eth1_nm_head = "255.255.255."
             value = 128
