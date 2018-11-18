@@ -397,6 +397,7 @@ class Net_config():
         os.system("sudo sed -i '6c \\ ' /etc/network/interfaces")
         os.system('sudo ifdown eth0')
         os.system('sudo ifup --ignore-errors eth0')
+        os.system('sudo supervisorctl restart all')
         os.system('sudo cp /etc/network/interfaces ./library/interfaces.bak')
 
     def eth1_dhcp(self):
@@ -410,7 +411,9 @@ class Net_config():
 #        self.usb_id = open('/tmp/usb.txt')
 #        self.usb_reset = 'sudo python /etc/network/Restusb.py -d ' + self.usb_id.read()
 #        os.system(self.usb_reset)
+        os.system('sudo supervisorctl restart all')
         os.system('sudo cp /etc/network/interfaces /etc/network/interfaces.bak')
+
 
     def eth0_static(self, ip, netmask, gateway):
         os.system("sudo sed -i '3c iface eth0 inet static' /etc/network/interfaces")
